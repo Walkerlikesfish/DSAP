@@ -26,13 +26,13 @@ Ntaps = 256;
 lp = 100;
 hp = 200;
 lpf1 = fir1(Ntaps,[lp/fs hp/fs]);
-freqz(lpf1,1,fs)
+freqz(lpf1,1,512)
 
 %% LPF 2
-lp = 0;
+lp = 100;
 hp = 200;
 lpf2 = fir1(Ntaps,[lp/fs hp/fs]);
-freqz(lpf2,1,fs)
+freqz(lpf1,1,512)
 
 %% LPF 3
 
