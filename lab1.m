@@ -20,7 +20,7 @@ Ntaps = 256;
 % audiowrite('out.wav', s_pca, fs);
 
 %% Upmixing - 4) ADP
-[c_adp, s_adp] = upmix_adp(x_l, x_r);
+% [c_adp, s_adp] = upmix_adp(x_l, x_r);
 
 %% LPF 1
 lp = 100;
