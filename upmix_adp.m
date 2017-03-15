@@ -7,13 +7,13 @@ c = zeros(size(x_l));
 s = zeros(size(x_l));
 % initialise the filter weight
 wnp = [1, 1]; % [w_l, w_r]
-wn = wnp;
+wn = wnp(:);
 x = [x_l, x_r];
 size(x)
 
 for ii = 1:len_in(1)
     xn = x(ii,:);
-    yn = wn * xn;
+    yn = xn * wn;
     wnp = wn;
     wn(1) = wnp(1) - mu*yn*(x_l(ii)-wnp(1)*yn); % w_l(n+1)
     wn(2) = wnp(2) - mu*yn*(x_r(ii)-wnp(2)*yn); % w_r(n+1)
