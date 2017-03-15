@@ -19,5 +19,4 @@ for ii = 1:len_in(1)
     c(ii) = wnp(1)*x_l(ii) + wnp(2)*x_r(ii);
     s(ii) = wnp(2)*x_l(ii) - wnp(1)*x_r(ii);
 end
-
 end
