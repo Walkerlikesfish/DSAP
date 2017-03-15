@@ -22,22 +22,41 @@ Ntaps = 256;
 error('stop');
 
 %% Upmixing - 4) ADP
-% [c_adp, s_adp] = upmix_adp(x_l, x_r);
+[c_adp, s_adp] = upmix_adp(x_l, x_r);
 
 %% LPF 1
-lp = 100;
-hp = 200;
-lpf1 = fir1(Ntaps,[lp/fs hp/fs]);
+% cutoff 4kHz n=256
+Wn = 4000/fs;
+lpf1 = fir1(Ntaps,Wn);
 freqz(lpf1,1,fs)
 
 %% LPF 2
-lp = 0;
-hp = 200;
-lpf2 = fir1(Ntaps,[lp/fs hp/fs]);
-freqz(lpf2,1,fs)
+Wn = 200/fs;
+lpf2 = fir1(Ntaps,Wn);
+%freqz(lpf2,1,fs)
 
 %% LPF 3
+Wn = 7000/fs;
+lpf3 = fir1(Ntaps,Wn);
 
 %% 90 degree shifter
+L = 2629;
+beta = 31;
+shifter = kaiser(L,beta);
 
 %% assemble
+s_in = input('Select the upmixer (1-4): enter q to exit', 's');
+while(s_in ~= 'q')
+    switch s_in
+        case '1'
+            display 'PSD Upmixer'
+            % y = filter(hd,x)
+        case '2'
+            display 'LMS Upmixer'
+        case '3'
+            display 'PCA-based Upmixer'
+        case '4'
+            display 'ADP Upmixer'
+    end
+    s_in = input('Select the upmixer: enter q to exit', 's');
+end
