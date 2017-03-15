@@ -8,7 +8,6 @@ w = zeros(N, 1);
 w(1:M) = sin((pi/2)*(n(1:M)+1/2)/M);
 w(M+1:N-M) = 1;
 w(N-M+1:N) = sin((pi/2)*(N-n(N-M+1:N)-1/2)/M);
-w = w.^2; % square the window, otherwise perfect sum is not achieved
 
 done = false;
 t_begin = 1;
@@ -18,7 +17,7 @@ c = zeros(size(x_l));
 s = zeros(size(x_l));
 
 % use running average on the eigenvectors, more natural feel
-lambda = 0.05;
+lambda = 0.1;
 % initial values
 v_c_inertia = [1; 1]/sqrt(2);
 v_s_inertia = [1; -1]/sqrt(2);
@@ -33,8 +32,8 @@ while (~done)
         t_end = t_max;
     end
     
-    y_l = x_l(t_begin:t_end);
-    y_r = x_r(t_begin:t_end);
+    y_l = x_l(t_begin:t_end).*w(1:t_end-t_begin+1);
+    y_r = x_r(t_begin:t_end).*w(1:t_end-t_begin+1);
     cov_mat = cov([y_l y_r]);
     [v, d] = eig(cov_mat);
     v_s = v(:, 1); % first one: smallest eigenvalue
@@ -60,10 +59,10 @@ end
 
 % debug mixing
 
-% figure;
-% hold on;
-% plot(d_plot, 'b');
-% plot(d_plot2, 'r');
+figure;
+hold on;
+plot(v_c_plot_l, 'b');
+plot(v_c_plot_r, 'r');
 
 
 % debug filter

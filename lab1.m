@@ -19,6 +19,8 @@ Ntaps = 256;
 [c_pca, s_pca] = upmix_pca(x_l, x_r);
 % audiowrite('out.wav', s_pca, fs);
 
+error('stop');
+
 %% Upmixing - 4) ADP
 % [c_adp, s_adp] = upmix_adp(x_l, x_r);
 
