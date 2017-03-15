@@ -59,10 +59,10 @@ end
 
 % debug mixing
 
-figure;
-hold on;
-plot(v_c_plot_l, 'b');
-plot(v_c_plot_r, 'r');
+% figure;
+% hold on;
+% plot(v_c_plot_l, 'b');
+% plot(v_c_plot_r, 'r');
 
 
 % debug filter
