@@ -47,7 +47,6 @@ while(s_in ~= 'q')
     switch s_in
         case '1'
             display 'PSD Upmixer'
-            % y = filter(hd,x)
         case '2'
             display 'LMS Upmixer'
         case '3'
