@@ -42,7 +42,7 @@ beta = 31;
 shifter = kaiser(L,beta);
 
 %% assemble
-s_in = input('Select the upmixer (1-4): enter q to exit', 's');
+s_in = input('Select the upmixer (1-4), enter q to exit: ', 's');
 while(s_in ~= 'q')
     switch s_in
         case '1'
