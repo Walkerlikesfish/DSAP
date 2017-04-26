@@ -1,0 +1,3 @@
+However, there is something we should know: 
+1) we don’t need to pre-filter the signal, as indicated in the paper1
+2) all we need to do is so simple : 1. find the TDOA x2 2. calc the argtg(TDOA1/TDOA2), we can only infer the angle of target from the input, cause the microphone array is a far field to the sound souce(the distance between the microphone is so close compared to the distance from the sound source)
