@@ -1,6 +1,6 @@
 function theta = angle_eval(wave_pair1, wave_pair2, fs)
-    N = size(wave_pair1);
-    theta = zeros(N, 2);
+    N = size(wave_pair1, 1);
+    theta = zeros(N, 1);
 
     c = 340;
     d = 0.1*sqrt(2);% pair distance
@@ -19,7 +19,7 @@ function theta = angle_eval(wave_pair1, wave_pair2, fs)
         end
         vx = c*tdoa1/d; % cos of alpha1
         vy = c*tdoa2/d; % cos of alpha2
-        theta_val = atan2(vy, vx);
+        theta_val = atan2(-vy, -vx); % stange reasons
         theta(start:start+N_window) = theta_val;
     end
 end
