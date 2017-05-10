@@ -4,10 +4,10 @@
 % Use soundsc(out,fs) to listen to the result
 
 
-[xMod,fsMod] = audioread('');
+[xMod,fsMod] = audioread('vocal.mp3');
 %Sound file containing the voice (modulator). 
 
-[xCarr,fsCarr] = audioread('');
+[xCarr,fsCarr] = audioread('instrument.mp3');
 %Sound file containing the instrument (carrier). 
 
 windowLength = 50e-3;

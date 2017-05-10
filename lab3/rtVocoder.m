@@ -10,7 +10,7 @@
 fs = 44100; 
 %sampling freq.
 
-carrFile = '';
+carrFile = 'instrument.mp3';
 %Sound file containing the instrument (carrier). 
 %If you want to use real-time instrument input, modify this script or
 %contact us.
