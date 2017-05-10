@@ -26,3 +26,7 @@ angle_s1 = angle_eval(wave_s1(:, 1:2), wave_s1(:, 3:4), fs);
 
 figure;
 plot(angle_s1);
+
+%% 
+
+[c, fl, rl, rr, fr] = vbap(wave_s1, angle_s1);
