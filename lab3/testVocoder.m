@@ -40,6 +40,9 @@ Nwin = Nwin+(1-mod(Nwin,2));%make length odd
 Nhop = (Nwin-1)/2;
 win = hann(Nwin);
 
+% clip the first silent part
+xCarr = xCarr(8*Nwin:end);
+
 out = zeros(length(xCarr),1);
 
 for n = 1:Nhop:length(xCarr)-Nwin+1
