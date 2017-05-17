@@ -5,13 +5,16 @@
 
 % select input mode
 % 1-test music; 2-impluse for PSD; 3-PCA test; 4-ADP test;
-flags.in_data_mode = 2;
+flags.in_data_mode = 3;
+
 % select the upmix method
-% 1 2 3 4
-flags.up_mix = 1; 
+% 1-PSD 2-LMS 3-PCA 4-ADP
+flags.up_mix = 4; 
+
 % save file tag: 1-ON; 0-OFF
 flags.save_file = 0;
 
+% Define low pass filter taps number
 flags.Ntaps = 256;
 
 
@@ -23,42 +26,40 @@ flags.Ntaps = 256;
 if flags.in_data_mode == 1
     filename = 'data/test2.wav';
     [x, fs] = audioread(filename);
-
     x_l = x(:, 1);
     x_r = x(:, 2);
     
 elseif flags.in_data_mode == 2
     fs = 16e3;
     t_in = 0.1; % set the demo input as 5 [s]
+    t_axis = [0:1/fs:t_in];
+    t_axis = t_axis(1:end-1);
     N_in = t_in * fs;
-
     x_l = zeros(1, N_in);
     x_r = zeros(1, N_in);
     x_r(1) = 1;
     
 elseif flags.in_data_mode == 3
-    filename = 'data/test2.wav';
+    filename = 'data/stereo2surround_testfile.wav';
     [x, fs] = audioread(filename);
-
     x_l = x(:, 1);
     x_r = x(:, 2);
 elseif flags.in_data_mode == 4
-    filename = 'data/test2.wav';
+    filename = 'data/stereo2surround_testfile_2.wav';
     [x, fs] = audioread(filename);
-
     x_l = x(:, 1);
     x_r = x(:, 2);
 end
 
 %% Upmix
-if flags.up_mix == 1
-    % PSD
+if flags.up_mix == 1 %PSD
     [c_psd, s_psd] = upmix_psd(x_l, x_r);
-elseif flags.up_mix == 2
-    
-elseif flags.up_mix == 3
-    
-elseif flags.up_mix == 4
+elseif flags.up_mix == 2 %LMS
+    [c_lms, s_lms] = upmix_lms(x_l, x_r);
+elseif flags.up_mix == 3 %PCA
+    [c_pca, s_pca] = upmix_pca(x_l, x_r);
+elseif flags.up_mix == 4  %ADP
+    [c_adp, s_adp] = upmix_adp(x_l, x_r);
     
 end
 
@@ -124,25 +125,21 @@ fr = x_r;
 switch flags.up_mix
     case 1
         figure(1)
-        subplot(6,1,1);plot(fl);
-        subplot(6,1,2);plot(fr);
-        subplot(6,1,3);plot(c);
-        subplot(6,1,4);plot(rl);
-        subplot(6,1,5);plot(rr);
-        subplot(6,1,6);plot(lfe);
-        
+        subplot(6,1,1);plot(t_axis,fl);
+        subplot(6,1,2);plot(t_axis,fr);
+        subplot(6,1,3);plot(t_axis,c);
+        subplot(6,1,4);plot(t_axis,rl);
+        subplot(6,1,5);plot(t_axis,rr);
+        subplot(6,1,6);plot(t_axis,lfe);
     case 2
-        disp('LMS Upmixer');
-        c_mono(:) = c_lms;
-        s_mono(:) = s_lms;
+        disp('LMS Upmixer - weight matrix plot');
+        
     case 3
-        disp('PCA-based Upmixer');
-        c_mono(:) = c_pca;
-        s_mono(:) = s_pca;
+        disp('PCA-based Upmixer - synthesis window & eigen vectors');
+        
     case 4
-        disp('ADP Upmixer');
-        c_mono(:) = c_adp;
-        s_mono(:) = s_adp;
+        disp('ADP Upmixer - wl and wr plotted');
+        
     otherwise
         error('invalid number!');
 end
