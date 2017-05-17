@@ -94,7 +94,7 @@ for ii = 1:nframes
         inputFrameIndex = inputFrameIndex + nrSamplesCopy;
         if inputFrameIndex > Nwin %buffer full
             
-         outputFrame = vocodeLPC(win.*inputFrame,win.*inputFrameCarr,lpcOrder);
+         outputFrame = vocodeLPC(win.*inputFrame,win.*inputFrameCarr,lpcOrder,0);
          
          outputBuff(outputBuffIndex:outputBuffIndex+outputFrameLength-1) = outputBuff(outputBuffIndex:outputBuffIndex+outputFrameLength-1) + outputFrame;
          outputBuffIndex = outputBuffIndex + Nhop;         

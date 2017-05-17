@@ -48,8 +48,10 @@ out = zeros(length(xCarr),1);
 for n = 1:Nhop:length(xCarr)-Nwin+1
     xCarrw = win.*xCarr(n:n+Nwin-1);
     xModw = win.*xMod(n:n+Nwin-1);
-    outw = vocodeLPC(xModw,xCarrw,lpcOrder);
-    
+    outw = vocodeLPC(xModw,xCarrw,lpcOrder,0);
+    if n == 3307
+        outw = vocodeLPC(xModw,xCarrw,lpcOrder,1);
+    end
     out(n:n+length(outw)-1) = out(n:n+length(outw)-1) + outw;
 end
     
