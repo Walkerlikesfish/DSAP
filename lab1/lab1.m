@@ -9,6 +9,16 @@ x_r = x(:, 2);
 
 Ntaps = 256;
 
+%% Data Generate
+% Construct demo input
+fs = 16e3;
+t_in = 10; % set the demo input as 5 [s]
+N_in = t_in * fs;
+
+x_l = zeros(1, N_in);
+x_r = zeros(1, N_in);
+x_r(1) = 1;
+
 %% Upmixing - 1) PSD
 [c_psd, s_psd] = upmix_psd(x_l, x_r);
 
