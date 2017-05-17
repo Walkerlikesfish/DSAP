@@ -29,7 +29,7 @@ save_file = true;
 
 N_window = 90000;% ~1s resolution
 angle_s1 = angle_eval(wave_s1(:, 1:2), wave_s1(:, 3:4), N_window, fs);
-[c, fl, rl, rr, fr] = vbap(wave_s1(:, 1), angle_s1, N_window);
+[c, fl, rl, rr, fr] = room_vbap(wave_s1(:, 1), angle_s1, N_window, fs);
 lfe = zeros(size(c));
 if save_file
     audiowrite('output/s1_c_lfe.wav', [c; lfe], fs);
@@ -39,7 +39,7 @@ end
 
 N_window = 90000;% ~1s resolution
 angle_s2 = angle_eval(wave_s2(:, 1:2), wave_s2(:, 3:4), N_window, fs);
-[c, fl, rl, rr, fr] = vbap(wave_s2(:, 1), angle_s2, N_window);
+[c, fl, rl, rr, fr] = room_vbap(wave_s2(:, 1), angle_s2, N_window, fs);
 lfe = zeros(size(c));
 if save_file
     audiowrite('output/s2_c_lfe.wav', [c; lfe], fs);
@@ -49,7 +49,7 @@ end
 
 N_window = 24000;% ~250ms resolution
 angle_s3 = angle_eval(wave_s3(:, 1:2), wave_s3(:, 3:4), N_window, fs);
-[c, fl, rl, rr, fr] = vbap(wave_s3(:, 1), angle_s3, N_window);
+[c, fl, rl, rr, fr] = room_vbap(wave_s3(:, 1), angle_s3, N_window, fs);
 lfe = zeros(size(c));
 if save_file
     audiowrite('output/s3_c_lfe.wav', [c; lfe], fs);
@@ -59,7 +59,7 @@ end
 
 N_window = 24000;% ~250ms resolution
 angle_s4 = angle_eval(wave_s4(:, 1:2), wave_s4(:, 3:4), N_window, fs);
-[c, fl, rl, rr, fr] = vbap(wave_s4(:, 1), angle_s4, N_window);
+[c, fl, rl, rr, fr] = room_vbap(wave_s4(:, 1), angle_s4, N_window, fs);
 lfe = zeros(size(c));
 if save_file
     audiowrite('output/s4_c_lfe.wav', [c; lfe], fs);

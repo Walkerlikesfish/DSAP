@@ -20,7 +20,7 @@ function [c, fl, rl, rr, fr] = vbap(mono_signal, theta_signal, N_window)
     fr = zeros(N, 1);
 
     % apply gain
-    for start=1:N_window:N-N_window
+    for start=1:N_window:N-N_window+1
         gains(:) = 0;
 
         theta = theta_signal(start);
