@@ -27,7 +27,16 @@ for ii = 1:len_in(1)
 end
 
 figure;
-subplot(2,1,1); plot(wn_plot_l); hold on;
-subplot(2,1,2); plot(wn_plot_r); hold on;
+subplot(2,1,1); plot(wn_plot_l); 
+title('Weight vector of left channel (WL)') 
+xlabel('Samples')
+ylabel('Amplitude')
+hold on;
+subplot(2,1,2); plot(wn_plot_r);
+title('Weight vector of right channel (WR)') 
+xlabel('Samples')
+ylabel('Amplitude')
+hold on;
+
 
 end
