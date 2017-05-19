@@ -1,9 +1,19 @@
 DSAP projects
 
-[Deadline]
-17 Mai, 23:52
+Yu Liu, Quentin, Huong, Ruijun @ Bruface 
 
-0. Define the workload
+DSAP labs include: 
+Lab1. Stero to Surround
+Lab2. Surround signal reconstruction
+Lab3. Vocode
+
+[Attention]
+Additional data required for lab2, please contact yuliu@ulb.ac.be acquiring access for data
+
+[Deadline]
+19 Mai, 23:52
+
+[Workload]
 
 Common tasks:
 1) record the data
@@ -42,5 +52,5 @@ Lab 3
 -> TODO: better carrier example
 
 2. Demo Part 
-
+https://docs.google.com/presentation/d/1GwMx42tztiRDpNAZJ3p7yUnY-Uylp6-sfFPb9vqiSYc/edit
 
