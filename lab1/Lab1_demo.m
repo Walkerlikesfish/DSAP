@@ -4,8 +4,8 @@
 %% Flags
 
 % select input mode
-% 1-test music; 2-impluse for PSD; 3-PCA test; 4-ADP test;
-flags.in_data_mode = 3;
+% 1-test music; 2-impluse for PSD; 3-stereo2surround_testfile; 4-stereo2surround_testfile_2;
+flags.in_data_mode = 4;
 
 % select the upmix method
 % 1-PSD 2-LMS 3-PCA 4-ADP
@@ -125,12 +125,24 @@ fr = x_r;
 switch flags.up_mix
     case 1
         figure(1)
-        subplot(6,1,1);plot(t_axis,fl);
-        subplot(6,1,2);plot(t_axis,fr);
-        subplot(6,1,3);plot(t_axis,c);
-        subplot(6,1,4);plot(t_axis,rl);
-        subplot(6,1,5);plot(t_axis,rr);
-        subplot(6,1,6);plot(t_axis,lfe);
+        subplot(3,2,1);plot(t_axis,fl); title('Front left channel') 
+        xlabel('Time (in seconds)') 
+        ylabel('Amplitude')     
+        subplot(3,2,2);plot(t_axis,fr); ylim([-1 1]); title('Front right channel') 
+        xlabel('Time (in seconds)') 
+        ylabel('Amplitude')   
+        subplot(3,2,3);plot(t_axis,c);  title('Center channel') 
+        xlabel('Time (in seconds)') 
+        ylabel('Amplitude')   
+        subplot(3,2,4);plot(t_axis,rl); title('Rear left channel') 
+        xlabel('Time (in seconds)') 
+        ylabel('Amplitude')   
+        subplot(3,2,5);plot(t_axis,rr); title('Rear right channel') 
+        xlabel('Time (in seconds)') 
+        ylabel('Amplitude')   
+        subplot(3,2,6);plot(t_axis,lfe); title('Low frequency enhancement') 
+        xlabel('Time (in seconds)') 
+        ylabel('Amplitude')   
     case 2
         disp('LMS Upmixer - weight matrix plot');
         

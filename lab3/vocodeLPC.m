@@ -17,7 +17,7 @@ g_coeff = g_spe/g_carr;
 
 % Apply the spectral envelop of speech on instrument
 est_ins = filter(1, a_spe, err_carr);
-% Aplly the amplitude dynamics of speech on instrument
+% Apply the amplitude dynamics of speech on instrument
 out_sig = est_ins*g_coeff;
 
 %[DEBUG] figure plot
@@ -32,15 +32,29 @@ spec_err_carr = fft(err_carr);
 
 if verbal
     figure(1);
-    subplot(3,1,1); plot(abs(spec_in_spe)); title('Original Signal');
+    subplot(3,1,1); plot(abs(spec_in_spe)); title('Original Signal (speech signal)');
+    xlabel('Samples') 
+    ylabel('Amplitude') 
     subplot(3,1,2); plot(abs(spec_est_spe)); title('Envelop');
+    xlabel('Samples') 
+    ylabel('Amplitude') 
     subplot(3,1,3); plot(abs(spec_err_spe)); title('Residual');
+    xlabel('Samples') 
+    ylabel('Amplitude') 
     figure(2);
-    subplot(3,1,1); plot(abs(spec_in_carr)); title('Original Signal');
+    subplot(3,1,1); plot(abs(spec_in_carr)); title('Original Signal (instrument signal)');
+    xlabel('Samples') 
+    ylabel('Amplitude') 
     subplot(3,1,2); plot(abs(spec_est_carr)); title('Envelop');
+    xlabel('Samples') 
+    ylabel('Amplitude') 
     subplot(3,1,3); plot(abs(spec_err_carr)); title('Residual');
+    xlabel('Samples') 
+    ylabel('Amplitude') 
     figure(3);
     plot(abs(out_sig)); title('Output Signal');
+    xlabel('Samples') 
+    ylabel('Amplitude') 
 end
 
 %figure;plot(est_ins); hold on; plot(out_sig);
