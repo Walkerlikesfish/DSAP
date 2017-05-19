@@ -1,13 +1,15 @@
 function [out_angle, t_delay, attenuation] = rir_params(ori_angle, fs)
-    %% hyperparameters
+    %returns a list of angles, delays (in samples) and attenation for virtual speakers
+
+    % hyperparameters
     room_dim = [4 4]; %room dimension
     d = 1; %distance between the speaker and the listener
     wave_speed = 340;
     speaker_loc = d*[cos(ori_angle) sin(ori_angle)]; %speaker location
-    %calculate R_p
+    % calculate R_p
     R_p_x = [speaker_loc(1) room_dim(1)-speaker_loc(1) -room_dim(1)-speaker_loc(1)];
     R_p_y = [speaker_loc(2) room_dim(2)-speaker_loc(2) -room_dim(2)-speaker_loc(2)];
-    %calculate 8 other angles
+    % calculate 8 other angles
     out_angle = zeros(9,1);
     t_delay = zeros(9,1);
     attenuation = zeros(9,1);
