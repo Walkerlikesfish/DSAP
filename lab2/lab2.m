@@ -35,7 +35,6 @@ if save_file
     audiowrite('output/s1_c_lfe.wav', [c lfe], fs);
     audiowrite('output/s1_front.wav', [fl fr], fs);
     audiowrite('output/s1_rear.wav', [rl rr], fs);
-    audiowrite('output/test1.wav', [c fl], fs);
 end
 
 N_window = 90000;% ~1s resolution
@@ -46,7 +45,6 @@ if save_file
     audiowrite('output/s2_c_lfe.wav', [c lfe], fs);
     audiowrite('output/s2_front.wav', [fl fr], fs);
     audiowrite('output/s2_rear.wav', [rl rr], fs);
-    audiowrite('output/test2.wav', [c fl], fs);
 end
 
 N_window = 24000;% ~250ms resolution
@@ -57,7 +55,6 @@ if save_file
     audiowrite('output/s3_c_lfe.wav', [c lfe], fs);
     audiowrite('output/s3_front.wav', [fl fr], fs);
     audiowrite('output/s3_rear.wav', [rl rr], fs);
-    audiowrite('output/test3.wav', [c fl], fs);
 end
 
 N_window = 24000;% ~250ms resolution
